@@ -48,11 +48,37 @@ var element = document.getElementById('phone');
         }
     })
     
-    // submitButton.addEventListener('click', formSend);
+    window.onresize = replaceElements;
+    let isReplaced = false;
 
-    // async function formSend(e){
-    //     e.preventDevault();
-    // }
+    let headerTop = document.querySelector(".header__top");
+    let headerBottom = document.querySelector(".header__bottom");
+    function replaceElements(){
+        const neededWidth = 992;
+        if (document.documentElement.scrollWidth <= neededWidth && isReplaced==false){
+            headerTop.append(document.querySelector(".side-info"));
+            headerTop.append(document.querySelector(".price"));
+            headerTop.append(document.querySelector(".social"));
+            isReplaced = true;
+        }    
+        if (document.documentElement.scrollWidth > neededWidth && isReplaced==true){
+            headerBottom.prepend(document.querySelector(".price"));
+            headerBottom.prepend(document.querySelector(".side-info"));
+            document.querySelector(".contact").before(document.querySelector(".social"));
+            isReplaced = false;
+        }
+}
 
+let burgerBtn = document.querySelector(".header__burger-menu")
+burgerBtn.addEventListener("click", function(){
+    burgerBtn.classList.toggle("header__burger-menu--active");
+    headerTop.classList.toggle("header__top--active");
+})
+
+let plusBtn = document.querySelector(".side-box__top-btn");
+plusBtn.addEventListener("click", function(){
+    document.querySelector(".side-box").classList.toggle("side-box--active");
+    plusBtn.classList.toggle("side-box__top-btn--active");
+})
 
 flsFunctions.testWebP();

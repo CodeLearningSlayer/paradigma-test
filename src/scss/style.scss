@@ -8,6 +8,8 @@
     background-image: url("@img/BG.png");
     min-height: 100vh;
     background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
     // background-size: cover;
     background-position: bottom center;
 }
@@ -48,7 +50,60 @@
         background-repeat: repeat-x;
         position: relative;
     }
-    
+    &__burger-menu{
+        display: none;
+        width: 20px;
+        cursor: pointer;
+        height: 15px;
+        border:none;
+        background-color: transparent;
+        position: relative;
+        span{
+            transition: all .3s;
+            width: 20px;
+            height: 2px;
+            border-radius: 4px;
+            background-color: #000;
+            display: block;
+            position: absolute; 
+            left: 0;
+            top:45%;
+        }
+        &::before,
+        &::after{
+            transition: all .3s;
+            content: "";
+            position: absolute;
+            border-radius: 4px;
+
+            width: 20px;
+            left: 0;
+            height: 2px;
+            border-radius: 3px;
+            background-color: #000;
+        }
+        &::before{
+            top:1px;
+        }
+        &::after{
+            bottom:0px;
+        }
+        &--active{
+            span{
+                transform: rotate(135deg);
+                height: 0;
+            }
+            &::after{
+                transform: rotate(45deg);
+                bottom:6px;
+            }
+            &::before{
+                transform: rotate(-45deg);
+                top:7px;
+
+            }
+        }
+    }
 }
 
 .side-info{
@@ -82,9 +137,10 @@
 }
 
 .logo{
-    max-width: 274px;
+    max-width: 20.2vw;
     position: relative;
     &__img{
+        max-width: 100%;
         filter:drop-shadow(0px 25px 50px rgba(0, 0, 0, .1));
     }
     &::before{
@@ -95,6 +151,7 @@
         width: 100%;
         height: 100%;
         z-index: 2;
+        background-size: 80%;
         background-repeat: no-repeat;
         background-position: center;
         background-image: url("@img/Логотип.svg");
@@ -178,6 +235,9 @@
 }
 
 .main{
+    position: relative;
+    overflow: hidden;
+    flex-grow: 2;
     &__wrapper{
         display: flex;
         align-items: center;
@@ -195,7 +255,7 @@
         left: 0;
         width: 100vw;
         height: 100vh;
-        z-index: 3;
+        z-index: 20;
         pointer-events: none;
         background-color: rgba(0,0,0,0.3);
         opacity:0;
@@ -203,6 +263,21 @@
     &__modal-container.show{
         opacity:1;
         pointer-events: all;
+    }
+}
+
+@keyframes animate {
+    0%{
+        box-shadow: 0 0 0 0 rgba(243, 129, 32, 0.7)
+    }
+    40%{
+        box-shadow: 0 0 0 30px rgba(243, 129, 32, 0)
+    }
+    80%{
+        box-shadow: 0 0 0 30px rgba(243, 129, 32, 0)
+    }
+    100%{
+        box-shadow: 0 0 0 0 rgba(243, 129, 32, 0)
     }
 }
 
@@ -225,10 +300,54 @@
         order:1;
         border:none;
         border-radius: 50%;
+        cursor: pointer;
         width: 33px;
         height: 33px;
         background-color: #F38120;
         display: none;
+        position: relative;
+        &:hover{
+            animation: animate 2s linear infinite;
+            cursor: pointer;
+        }
+        &::after,
+        &::before{
+            content: '';
+            position: absolute;
+            background-color: #fff;
+        }
+        &::after{
+            width: 9px;
+            height: 2px;
+            top:50%;
+            transform: translateX(-50%) translateY(-50%);
+            left: 50%;
+        }
+        &::before{
+            transition: all .3s;
+            height: 9px;
+            width: 2px;
+            left: 51%;
+            transform: translateX(-58%) translateY(-50%);
+            top:50%;
+        }
+        &--active{
+            &::before{
+                transform: rotate(45deg);
+                width: 13px;
+                height: 2px;
+                left: 10px;
+                border-radius: 4px;
+            }
+            &::after{
+                transform: rotate(-45deg);
+                width: 13px;
+                left:unset;
+                right:10px;
+                height: 2px;
+                border-radius: 4px;
+            }
+        }
     }
     &__item{
         padding: 10px 15px;
@@ -252,7 +371,6 @@ ul.side-box__list{
 }
 
 .main{
-    padding-bottom: 162px;
     &__info{
         margin-bottom: 45px;
         max-width: 45vw;
@@ -321,7 +439,7 @@ ul.side-box__list{
         color:#fff;
         &--calc{
             background-color: $green;
-            max-width: 25vw;
+            max-width: 20vw;
             transition: .3s;
             &:hover{
                 background-color:#21E27C;
@@ -329,7 +447,7 @@ ul.side-box__list{
         }
         &--sign{
             background-color: #F38120;
-            max-width: 22vw;
+            max-width: 17.5vw;
             transition: .3s;
             &:hover{
                 background-color:#FD9C49;
