@@ -51,6 +51,19 @@
     .main__side-box {
         max-width: 25vw;
     }
+    .modal{
+        max-width:500px;
+        width: 100%;
+        &__form{
+            max-width: 100%;
+        }
+        &__info{
+            max-width: 100%;
+        }
+        &__top-title{
+            max-width: 100%;
+        }
+    }
     .wrapper{
         position: relative;
     }
@@ -127,7 +140,6 @@
     .main{
         &__buttons{
             flex-direction: column;
-            align-items: center;
         }
         &__btn{
             justify-content: center;
@@ -140,6 +152,9 @@
                 margin-top: 20px;
             }
         }
+    }
+    .wrapper{
+        background-position:bottom;
     }
 }
 
@@ -159,12 +174,24 @@
     }
     .logo{
         max-width:25vw;
+        min-width: 75px;
     }
+   
 }
 
 @media (max-width:676px) {
+    .main{
+        &__buttons{
+            align-items: center;
+        }
+    }
+    .success-send{
+        font-size: 25px;
+        line-height: 30px;
+    }
     .wrapper{
-        background-size: contain;
+        background-size: cover;
+        background-position: bottom center;
     }
     .side-box{
         position: absolute;
@@ -265,6 +292,9 @@
     .side-box{
         bottom:-285px;
     }
+    .modal{
+        max-width: 80%;
+    }
 }
 
 
@@ -294,10 +324,32 @@
         max-width: 226px;
         width: 100%;
     }
+    .modal{
+        &__top-title{
+            font-size: 22px;
+            line-height: 30px;
+        }
+        &__info{
+            font-size: 12px;
+            line-height: 18px;
+        }
+    }
+    .success-send{
+        font-size: 20px;
+        line-height: 30px;
+    }
 }
 
 @media (max-width:380px){
     .side-box{
         bottom:-285px;
+    }
+    .modal{
+        padding: 30px 15px 40px;
+    }
+    .success-send{
+        font-size: 18px;
+        line-height: 25px;
+        padding:10px 25px;
     }
 }

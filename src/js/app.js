@@ -69,6 +69,8 @@ var element = document.getElementById('phone');
         }
 }
 
+replaceElements();
+
 let burgerBtn = document.querySelector(".header__burger-menu")
 burgerBtn.addEventListener("click", function(){
     burgerBtn.classList.toggle("header__burger-menu--active");
