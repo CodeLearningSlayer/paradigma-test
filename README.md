@@ -1,3 +1,3 @@
 # paradigma-test
-Landing for paradigma
+Landing for paradigma <br
 [Click](http://www.paradigma-test.byethost31.com)
